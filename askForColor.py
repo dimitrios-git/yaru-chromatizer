@@ -32,8 +32,8 @@ def get_color_input():
             print("Invalid color. Please enter a common color name or a valid hex color code.")
             continue
         
-        user_confirmed = input("Is this the color you want? (yes/no): ").lower()
-        if user_confirmed == 'yes':
+        user_confirmed = input("Is this the color you want? (y/n): ").lower()
+        if user_confirmed == 'y':
             # Write the selected color to a file
             with open('accepted_color.data.tmp', 'w') as file:
                 file.write(hex_color)

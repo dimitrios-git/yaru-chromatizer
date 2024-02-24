@@ -2,6 +2,21 @@
 # This script is used to change the color of the Yaru theme and generate a new
 # theme with the new color.
 #
+
+# Check if the Ubuntu Yaru theme was previously installed and ask the user to
+# confirm the deletion of the previous theme. If the user does not confirm the
+# deletion, the script will be aborted.
+echo "Checking if the Ubuntu Yaru theme was previously installed..."
+if [ -d $HOME/.local/share/themes/Yaru ]; then
+	echo "The Ubuntu Yaru theme was previously installed. Do you want to delete it? (y/n)"
+	read deleteYaru
+	if [ $deleteYaru = "n" ]; then
+		echo "The script was aborted."
+		exit 1
+	fi
+fi
+rm -rf $HOME/.local/share/themes/Yaru
+
 # Clone the Yaru repository:
 echo "Cloning the Yaru repository..."
 git clone git@github.com:ubuntu/yaru.git
@@ -35,14 +50,46 @@ ninja -C "build" render-icons-blue
 echo "Installing the theme..."
 ninja -C "build" install
 
-# Clean the environment:
-echo "Cleaning the environment..."
-mv $HOME/.local/share/themes/Yaru-blue $HOME/.local/share/themes/Yaru-chromatizer
-mv $HOME/.local/share/themes/Yaru-blue-dark $HOME/.local/share/themes/Yaru-chromatizer-dark
+# Check if the theme was previosly installed and ask the user to confirm the
+# deletion of the previous theme. If the user does not confirm the deletion,
+# the script will be aborted.
+echo "Checking if the theme was previously installed..."
+if [ -d $HOME/.local/share/themes/Yaru-chromatizer ]; then
+	echo "The theme was previously installed. Do you want to delete it? (y/n)"
+	read deleteTheme
+	if [ $deleteTheme = "n" ]; then
+		echo "The script was aborted."
+		exit 1
+	fi
+fi
+rm -rf $HOME/.local/share/themes/Yaru-chromatizer
 
-mv $HOME/.local/share/icons/Yaru-blue $HOME/.local/share/icons/Yaru-chromatizer
-mv $HOME/.local/share/icons/Yaru-blue-dark $HOME/.local/share/icons/Yaru-chromatizer-dark
+# Check for the icons as well:
+echo "Checking if the icons were previously installed..."
+if [ -d $HOME/.local/share/icons/Yaru-chromatizer ]; then
+	echo "The icons were previously installed. Do you want to delete them? (y/n)"
+	read deleteIcons
+	if [ $deleteIcons = "n" ]; then
+		echo "The script was aborted."
+		exit 1
+	fi
+fi
+rm -rf $HOME/.local/share/icons/Yaru-chromatizer
 
+# Rename the theme and the icons:
+rsync -avh --remove-source-files $HOME/.local/share/themes/Yaru-blue/ $HOME/.local/share/themes/Yaru-chromatizer/
+rm -rf $HOME/.local/share/themes/Yaru-blue
+
+rsync -avh --remove-source-files $HOME/.local/share/themes/Yaru-blue-dark/ $HOME/.local/share/themes/Yaru-chromatizer-dark/
+rm -rf $HOME/.local/share/themes/Yaru-blue-dark
+
+rsync -avh --remove-source-files $HOME/.local/share/icons/Yaru-blue/ $HOME/.local/share/icons/Yaru-chromatizer/
+rm -rf $HOME/.local/share/icons/Yaru-blue
+
+rsync -avh --remove-source-files $HOME/.local/share/icons/Yaru-blue-dark/ $HOME/.local/share/icons/Yaru-chromatizer-dark/
+rm -rf $HOME/.local/share/icons/Yaru-blue-dark
+
+# Remove the other themes and icons:
 rm -rf $HOME/.local/share/themes/Yaru-bark
 rm -rf $HOME/.local/share/themes/Yaru-bark-dark
 rm -rf $HOME/.local/share/themes/Yaru-dark
@@ -81,18 +128,28 @@ rm -rf $HOME/.local/share/icons/Yaru-viridian-dark
 
 rm -rf $HOME/.local/share/themes/Yaru
 
+# Move the cursors to the correct directory:
 mkdir -p $HOME/.local/share/icons/Yaru-chromatizer
 mv $HOME/.local/share/icons/Yaru/cursors $HOME/.local/share/icons/Yaru-chromatizer
 mv $HOME/.local/share/icons/Yaru/cursor.theme $HOME/.local/share/icons/Yaru-chromatizer
 rm -rf $HOME/.local/share/icons/Yaru
 
+# Change the theme name in the index.theme file:
 sed -i 's/Yaru-blue-dark/Yaru-chromatizer-dark/g' ~/.local/share/themes/Yaru-chromatizer-dark/index.theme 
 sed -i 's/Yaru-blue/Yaru-chromatizer/g' ~/.local/share/themes/Yaru-chromatizer/index.theme 
 sed -i 's/Yaru-blue-dark/Yaru-chromatizer-dark/g' ~/.local/share/icons/Yaru-chromatizer-dark/index.theme 
 sed -i 's/Yaru-blue/Yaru-chromatizer/g' ~/.local/share/icons/Yaru-chromatizer/index.theme 
 sed -i 's/Yaru/Yaru-chromatizer/g' ~/.local/share/icons/Yaru-chromatizer/cursor.theme 
 
-# Enable the theme:
+# Ask the user if they want to enable the theme:
+echo "Do you want to enable the theme? (y/n)"
+read enableTheme
+
+if [ $enableTheme = "n" ]; then
+	echo "The script was aborted."
+	exit 1
+fi
+
 echo "Enabling the theme..."
 gsettings set org.gnome.desktop.interface icon-theme Yaru-chromatizer
 gsettings set org.gnome.desktop.interface cursor-theme Yaru-chromatizer
