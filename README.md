@@ -24,6 +24,20 @@ cd yaru-chromatizer
 Follow the instructions and choose your desired accent color. The script will
 then generate the theme and icon set for your chosen color.
 
+### Enable the new theme
+After running the script, the new theme and icon set will be generated in the
+`~/.local/share/themes` and `~/.local/share/icons` directories, respectively.
+
+For demonstration purposes, you may also install:
+```bash
+sudo apt install gnome-tweaks
+sudo apt install gnome-shell-extension-manager
+sudo apt install gtk-3-examples
+```
+Open the Extension Manager and enable the User Themes extension. Then, open the
+GNOME Tweaks application and navigate to the Appearance tab. You can now select
+the new theme and icon set from the drop-down menus.
+
 ## License
 The Yaru-chromatizer script is released under the MIT License. However, please
 note that the Yaru theme, which this script modifies, is subject to its own
