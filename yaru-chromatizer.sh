@@ -69,6 +69,7 @@ if [ -d $HOME/.local/share/themes/Yaru-chromatizer ]; then
 	fi
 fi
 rm -rf $HOME/.local/share/themes/Yaru-chromatizer
+rm -rf $HOME/.local/share/themes/Yaru-chromatizer-dark
 
 # Check for the icons as well:
 echo "Checking if the icons were previously installed..."
@@ -81,19 +82,14 @@ if [ -d $HOME/.local/share/icons/Yaru-chromatizer ]; then
 	fi
 fi
 rm -rf $HOME/.local/share/icons/Yaru-chromatizer
+rm -rf $HOME/.local/share/icons/Yaru-chromatizer-dark
 
 # Rename the theme and the icons:
-rsync -avh --remove-source-files $HOME/.local/share/themes/Yaru-blue/ $HOME/.local/share/themes/Yaru-chromatizer/
-rm -rf $HOME/.local/share/themes/Yaru-blue
+mv $HOME/.local/share/themes/Yaru-blue/ $HOME/.local/share/themes/Yaru-chromatizer/
+mv $HOME/.local/share/themes/Yaru-blue-dark/ $HOME/.local/share/themes/Yaru-chromatizer-dark/
 
-rsync -avh --remove-source-files $HOME/.local/share/themes/Yaru-blue-dark/ $HOME/.local/share/themes/Yaru-chromatizer-dark/
-rm -rf $HOME/.local/share/themes/Yaru-blue-dark
-
-rsync -avh --remove-source-files $HOME/.local/share/icons/Yaru-blue/ $HOME/.local/share/icons/Yaru-chromatizer/
-rm -rf $HOME/.local/share/icons/Yaru-blue
-
-rsync -avh --remove-source-files $HOME/.local/share/icons/Yaru-blue-dark/ $HOME/.local/share/icons/Yaru-chromatizer-dark/
-rm -rf $HOME/.local/share/icons/Yaru-blue-dark
+mv $HOME/.local/share/icons/Yaru-blue/ $HOME/.local/share/icons/Yaru-chromatizer/
+mv $HOME/.local/share/icons/Yaru-blue-dark/ $HOME/.local/share/icons/Yaru-chromatizer-dark/
 
 # Remove the other themes and icons:
 rm -rf $HOME/.local/share/themes/Yaru-bark
@@ -141,11 +137,11 @@ mv $HOME/.local/share/icons/Yaru/cursor.theme $HOME/.local/share/icons/Yaru-chro
 rm -rf $HOME/.local/share/icons/Yaru
 
 # Change the theme name in the index.theme file:
-sed -i 's/Yaru-blue-dark/Yaru-chromatizer-dark/g' ~/.local/share/themes/Yaru-chromatizer-dark/index.theme 
-sed -i 's/Yaru-blue/Yaru-chromatizer/g' ~/.local/share/themes/Yaru-chromatizer/index.theme 
-sed -i 's/Yaru-blue-dark/Yaru-chromatizer-dark/g' ~/.local/share/icons/Yaru-chromatizer-dark/index.theme 
-sed -i 's/Yaru-blue/Yaru-chromatizer/g' ~/.local/share/icons/Yaru-chromatizer/index.theme 
-sed -i 's/Yaru/Yaru-chromatizer/g' ~/.local/share/icons/Yaru-chromatizer/cursor.theme 
+sed -i 's/Yaru-blue-dark/Yaru-chromatizer-dark/g' ~/.local/share/themes/Yaru-chromatizer-dark/index.theme
+sed -i 's/Yaru-blue/Yaru-chromatizer/g' ~/.local/share/themes/Yaru-chromatizer/index.theme
+sed -i 's/Yaru-blue-dark/Yaru-chromatizer-dark/g' ~/.local/share/icons/Yaru-chromatizer-dark/index.theme
+sed -i 's/Yaru-blue/Yaru-chromatizer/g' ~/.local/share/icons/Yaru-chromatizer/index.theme
+sed -i 's/Yaru/Yaru-chromatizer/g' ~/.local/share/icons/Yaru-chromatizer/cursor.theme
 
 # Ask the user if they want to enable the theme:
 echo "Do you want to enable the theme? (y/n)"
