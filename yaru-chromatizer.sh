@@ -32,9 +32,18 @@ echo "Cloning the Yaru repository..."
 git clone https://github.com/ubuntu/yaru.git
 cd yaru
 
- Prepare the environment:
+# Remove all variants but the blue one
+sed -i "s/'bark',//g" meson_options.txt
+sed -i "s/'sage',//g" meson_options.txt
+sed -i "s/'olive',//g" meson_options.txt
+sed -i "s/'viridian',//g" meson_options.txt
+sed -i "s/'purple',//g" meson_options.txt
+sed -i "s/'magenta',//g" meson_options.txt
+sed -i "s/'red',//g" meson_options.txt
+
+# Prepare the environment:
 echo "Preparing the environment..."
-meson "build" --prefix=$HOME/.local
+meson build --prefix=$HOME/.local
 
 # Change the color of the theme:
 echo "Changing the accent color of the theme..."
@@ -90,42 +99,42 @@ mv $HOME/.local/share/themes/Yaru-blue-dark/ $HOME/.local/share/themes/Yaru-chro
 
 mv $HOME/.local/share/icons/Yaru-blue/ $HOME/.local/share/icons/Yaru-chromatizer/
 
-# Remove the other themes and icons:
-rm -rf $HOME/.local/share/themes/Yaru-bark
-rm -rf $HOME/.local/share/themes/Yaru-bark-dark
-rm -rf $HOME/.local/share/themes/Yaru-dark
-rm -rf $HOME/.local/share/themes/Yaru-magenta
-rm -rf $HOME/.local/share/themes/Yaru-magenta-dark
-rm -rf $HOME/.local/share/themes/Yaru-olive
-rm -rf $HOME/.local/share/themes/Yaru-olive-dark
-rm -rf $HOME/.local/share/themes/Yaru-prussiangreen
-rm -rf $HOME/.local/share/themes/Yaru-prussiangreen-dark
-rm -rf $HOME/.local/share/themes/Yaru-purple
-rm -rf $HOME/.local/share/themes/Yaru-purple-dark
-rm -rf $HOME/.local/share/themes/Yaru-red
-rm -rf $HOME/.local/share/themes/Yaru-red-dark
-rm -rf $HOME/.local/share/themes/Yaru-sage
-rm -rf $HOME/.local/share/themes/Yaru-sage-dark
-rm -rf $HOME/.local/share/themes/Yaru-viridian
-rm -rf $HOME/.local/share/themes/Yaru-viridian-dark
+# # Remove the other themes and icons:
+# rm -rf $HOME/.local/share/themes/Yaru-bark
+# rm -rf $HOME/.local/share/themes/Yaru-bark-dark
+# rm -rf $HOME/.local/share/themes/Yaru-dark
+# rm -rf $HOME/.local/share/themes/Yaru-magenta
+# rm -rf $HOME/.local/share/themes/Yaru-magenta-dark
+# rm -rf $HOME/.local/share/themes/Yaru-olive
+# rm -rf $HOME/.local/share/themes/Yaru-olive-dark
+# rm -rf $HOME/.local/share/themes/Yaru-prussiangreen
+# rm -rf $HOME/.local/share/themes/Yaru-prussiangreen-dark
+# rm -rf $HOME/.local/share/themes/Yaru-purple
+# rm -rf $HOME/.local/share/themes/Yaru-purple-dark
+# rm -rf $HOME/.local/share/themes/Yaru-red
+# rm -rf $HOME/.local/share/themes/Yaru-red-dark
+# rm -rf $HOME/.local/share/themes/Yaru-sage
+# rm -rf $HOME/.local/share/themes/Yaru-sage-dark
+# rm -rf $HOME/.local/share/themes/Yaru-viridian
+# rm -rf $HOME/.local/share/themes/Yaru-viridian-dark
 
-rm -rf $HOME/.local/share/icons/Yaru-bark
-rm -rf $HOME/.local/share/icons/Yaru-bark-dark
-rm -rf $HOME/.local/share/icons/Yaru-dark
-rm -rf $HOME/.local/share/icons/Yaru-magenta
-rm -rf $HOME/.local/share/icons/Yaru-magenta-dark
-rm -rf $HOME/.local/share/icons/Yaru-olive
-rm -rf $HOME/.local/share/icons/Yaru-olive-dark
-rm -rf $HOME/.local/share/icons/Yaru-prussiangreen
-rm -rf $HOME/.local/share/icons/Yaru-prussiangreen-dark
-rm -rf $HOME/.local/share/icons/Yaru-purple
-rm -rf $HOME/.local/share/icons/Yaru-purple-dark
-rm -rf $HOME/.local/share/icons/Yaru-red
-rm -rf $HOME/.local/share/icons/Yaru-red-dark
-rm -rf $HOME/.local/share/icons/Yaru-sage
-rm -rf $HOME/.local/share/icons/Yaru-sage-dark
-rm -rf $HOME/.local/share/icons/Yaru-viridian
-rm -rf $HOME/.local/share/icons/Yaru-viridian-dark
+# rm -rf $HOME/.local/share/icons/Yaru-bark
+# rm -rf $HOME/.local/share/icons/Yaru-bark-dark
+# rm -rf $HOME/.local/share/icons/Yaru-dark
+# rm -rf $HOME/.local/share/icons/Yaru-magenta
+# rm -rf $HOME/.local/share/icons/Yaru-magenta-dark
+# rm -rf $HOME/.local/share/icons/Yaru-olive
+# rm -rf $HOME/.local/share/icons/Yaru-olive-dark
+# rm -rf $HOME/.local/share/icons/Yaru-prussiangreen
+# rm -rf $HOME/.local/share/icons/Yaru-prussiangreen-dark
+# rm -rf $HOME/.local/share/icons/Yaru-purple
+# rm -rf $HOME/.local/share/icons/Yaru-purple-dark
+# rm -rf $HOME/.local/share/icons/Yaru-red
+# rm -rf $HOME/.local/share/icons/Yaru-red-dark
+# rm -rf $HOME/.local/share/icons/Yaru-sage
+# rm -rf $HOME/.local/share/icons/Yaru-sage-dark
+# rm -rf $HOME/.local/share/icons/Yaru-viridian
+# rm -rf $HOME/.local/share/icons/Yaru-viridian-dark
 
 rm -rf $HOME/.local/share/themes/Yaru
 
