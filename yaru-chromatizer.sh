@@ -5,7 +5,7 @@
 
 # Install prerequisites:
 echo "Installing prerequisites..."
-sudo apt-get install -y libgtk-3-dev git meson sassc inkscape
+sudo apt-get install -y libgtk-3-dev git meson sassc inkscape xvfb
 
 # Check if the installation was successful
 if [ $? -ne 0 ]; then
