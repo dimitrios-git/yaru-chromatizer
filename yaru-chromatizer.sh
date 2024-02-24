@@ -138,7 +138,6 @@ rm -rf $HOME/.local/share/icons/Yaru
 # Change the theme name in the index.theme file:
 sed -i 's/Yaru-blue-dark/Yaru-chromatizer-dark/g' ~/.local/share/themes/Yaru-chromatizer-dark/index.theme
 sed -i 's/Yaru-blue/Yaru-chromatizer/g' ~/.local/share/themes/Yaru-chromatizer/index.theme
-sed -i 's/Yaru-blue-dark/Yaru-chromatizer-dark/g' ~/.local/share/icons/Yaru-chromatizer-dark/index.theme
 sed -i 's/Yaru-blue/Yaru-chromatizer/g' ~/.local/share/icons/Yaru-chromatizer/index.theme
 sed -i 's/Yaru/Yaru-chromatizer/g' ~/.local/share/icons/Yaru-chromatizer/cursor.theme
 
