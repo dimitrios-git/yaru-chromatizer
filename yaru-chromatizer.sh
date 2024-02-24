@@ -5,7 +5,7 @@
 
 # Install prerequisites:
 echo "Installing prerequisites..."
-sudo apt-get install -y libgtk-3-dev git meson sassc inkscape xvfb
+sudo apt-get install -y libgtk-3-dev meson sassc inkscape optipng xvfb
 
 # Check if the installation was successful
 if [ $? -ne 0 ]; then
@@ -162,6 +162,7 @@ fi
 echo "Enabling the theme..."
 gsettings set org.gnome.desktop.interface icon-theme Yaru-chromatizer
 gsettings set org.gnome.desktop.interface cursor-theme Yaru-chromatizer
+gsettings set org.gnome.desktop.interface shell-theme Yaru-chromatizer
 
 # Ask the user whether they want dark mode or not:
 echo "Do you want to enable dark mode? (y/n)"
