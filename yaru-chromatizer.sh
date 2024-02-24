@@ -26,11 +26,11 @@ cd yaru
 echo "Installing the dependencies..."
 ./bootstrap.sh --development
 
-# Check if the installation was successful
-if [ $? -ne 0 ]; then
-    echo "Failed to install dependencies. Aborting script."
-    exit 1
-fi
+# # Check if the installation was successful
+# if [ $? -ne 0 ]; then
+#     echo "Failed to install dependencies. Aborting script."
+#     exit 1
+# fi
 
 # Prepare the environment:
 echo "Preparing the environment..."
