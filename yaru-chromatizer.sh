@@ -3,6 +3,16 @@
 # theme with the new color.
 #
 
+# Install prerequisites:
+echo "Installing prerequisites..."
+sudo apt-get install -y libgtk-3-dev git meson sassc inkscape
+
+# Check if the installation was successful
+if [ $? -ne 0 ]; then
+    echo "Failed to install prerequisites. Aborting script."
+    exit 1
+fi
+
 # Check if the Ubuntu Yaru theme was previously installed and ask the user to
 # confirm the deletion of the previous theme. If the user does not confirm the
 # deletion, the script will be aborted.
@@ -19,20 +29,10 @@ rm -rf $HOME/.local/share/themes/Yaru
 
 # Clone the Yaru repository:
 echo "Cloning the Yaru repository..."
-git clone git@github.com:ubuntu/yaru.git
+git clone https://github.com/ubuntu/yaru.git
 cd yaru
 
-# Install the dependencies:
-echo "Installing the dependencies..."
-./bootstrap.sh --development
-
-# # Check if the installation was successful
-# if [ $? -ne 0 ]; then
-#     echo "Failed to install dependencies. Aborting script."
-#     exit 1
-# fi
-
-# Prepare the environment:
+ Prepare the environment:
 echo "Preparing the environment..."
 meson "build" --prefix=$HOME/.local
 
@@ -89,7 +89,6 @@ mv $HOME/.local/share/themes/Yaru-blue/ $HOME/.local/share/themes/Yaru-chromatiz
 mv $HOME/.local/share/themes/Yaru-blue-dark/ $HOME/.local/share/themes/Yaru-chromatizer-dark/
 
 mv $HOME/.local/share/icons/Yaru-blue/ $HOME/.local/share/icons/Yaru-chromatizer/
-mv $HOME/.local/share/icons/Yaru-blue-dark/ $HOME/.local/share/icons/Yaru-chromatizer-dark/
 
 # Remove the other themes and icons:
 rm -rf $HOME/.local/share/themes/Yaru-bark
