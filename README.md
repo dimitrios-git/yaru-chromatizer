@@ -6,10 +6,12 @@ theme with your chosen accent color. This project allows users to easily modify
 the accent colors of the Yaru theme, generating a personalized theme and icon
 set for their desktop environment.
 
-## Prerequisites
-Yaru-chromatizer requires the following software to be installed on your system:
-- Git
-- Python 3
+## Compatibility
+Yaru-chromatizer is tested on **Ubuntu 22.04 LTS**.
+
+The script should work on other Linux distros that use the GNOME desktop
+environment. However, it is not guaranteed to work on all systems, and slight
+adjustments may be necessary.
 
 ## Usage
 To use Yaru-chromatizer, you need to clone the repository and run the script.
@@ -37,6 +39,14 @@ sudo apt install gtk-3-examples
 Open the Extension Manager and enable the User Themes extension. Then, open the
 GNOME Tweaks application and navigate to the Appearance tab. You can now select
 the new theme and icon set from the drop-down menus.
+
+## Screenshots
+![Yaru-chromatizer](assets/images/Files-blue.png)
+![Yaru-chromatizer](assets/images/gtk3-widget-factory-blue.png)
+![Yaru-chromatizer](assets/images/Files-cyan.png)
+![Yaru-chromatizer](assets/images/gtk3-widget-factory-cyan.png)
+![Yaru-chromatizer](assets/images/Files-yellow.png)
+![Yaru-chromatizer](assets/images/gtk3-widget-factory-yellow.png)
 
 ## License
 The Yaru-chromatizer script is released under the MIT License. However, please
